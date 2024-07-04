@@ -1,5 +1,6 @@
 import 'package:dashboard/home/overview_section.dart';
 import 'package:dashboard/home/top_insights.dart';
+import 'package:dashboard/util/responsive.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,6 +15,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    bool isDesktop = Responsive.isDesktop(context);
+    bool isMobile = Responsive.isMobile(context);
+    bool isTablet = Responsive.isTablet(context);
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -33,9 +37,9 @@ class _HomePageState extends State<HomePage> {
             ),
             child: Column(
               children: [
-                const Text(
+                Text(
                   'Good Afternoon, Ritesh Kumar',
-                  style: TextStyle(color: Colors.white, fontSize: 40),
+                  style: TextStyle(color: Colors.white, fontSize:isMobile?32 : 40),
                 ),
                 const Text(
                   'Sun,30 June',
@@ -50,10 +54,11 @@ class _HomePageState extends State<HomePage> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                   child: Row(
+                    mainAxisAlignment:isMobile?MainAxisAlignment.center: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                      Column(
+                        crossAxisAlignment:isMobile?CrossAxisAlignment.center:  CrossAxisAlignment.start,
+                        children:const [
                           Row(
                             children: [
                               Text(
@@ -73,39 +78,27 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
-                      const Spacer(),
+                      if(!isMobile)
                       Container(
-                        margin: const EdgeInsets.only(right: 20),
+                        width: MediaQuery.sizeOf(context).width / 2.2,
+                        // margin: const EdgeInsets.only(right: 10),
                         decoration: BoxDecoration(
                             gradient: const LinearGradient(colors: [
                               Color.fromARGB(255, 255, 51, 51),
                               Colors.white
                             ]),
                             borderRadius: BorderRadius.circular(20)),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 40, vertical: 10),
-                        child: Row(
+                        padding: const EdgeInsets.symmetric( vertical: 10,horizontal: 20),
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Current balance',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 18),
-                                ),
-                                Text(
-                                    "Your settlements are not being processed as we've noticed lack of transactional activity.\n Collect more payments to continue receiving settlements"),
-                              ],
+                            Text(
+                              'Current balance',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 18),
                             ),
-                            Container(
-                              height: 100,
-                              width: 100,
-                              margin: const EdgeInsets.only(
-                                left: 30,
-                              ),
-                              color: Colors.amber,
-                            )
+                            Text("Your settlements are not being processed as we've noticed lack of transactional activity. Collect more payments to continue receiving settlements",
+                            ),
                           ],
                         ),
                       )

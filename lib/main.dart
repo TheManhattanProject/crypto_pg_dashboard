@@ -1,9 +1,14 @@
-import 'package:dashboard/side_bar.dart';
-import 'package:dashboard/testing_page.dart';
-import 'package:dashboard/top_bar.dart';
+import 'dart:io';
+
+import 'package:dashboard/dashboard_page.dart';
 import 'package:flutter/material.dart';
+import 'package:window_manager/window_manager.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  if(Platform.isWindows){
+    WindowManager.instance.setMinimumSize(const Size(600, 600));
+  }
   runApp(const MyApp());
 }
 
@@ -20,48 +25,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class DashboardPage extends StatefulWidget {
-  const DashboardPage({super.key});
-
-  @override
-  _DashboardPageState createState() => _DashboardPageState();
-}
-
-class _DashboardPageState extends State<DashboardPage> {
-  String _currentPage = 'home';
-
-  void _changePage(String pageName) {
-    setState(() {
-      _currentPage = pageName;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Row(
-        children: [
-          LeftSidebar(
-            currentPage: _currentPage,
-            onPageChanged: _changePage,
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                const TopBar(),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: DummyPage(pageName: _currentPage),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}

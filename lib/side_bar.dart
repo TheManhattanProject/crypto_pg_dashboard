@@ -1,8 +1,9 @@
+import 'package:dashboard/util/responsive.dart';
 import 'package:flutter/material.dart';
 
 class LeftSidebar extends StatelessWidget {
-  final String currentPage;
-  final Function(String) onPageChanged;
+  final int currentPage;
+  final Function(int) onPageChanged;
 
   const LeftSidebar({
     super.key,
@@ -12,8 +13,9 @@ class LeftSidebar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDesktop = Responsive.isDesktop(context);
     return Container(
-      width: 300,
+      width: MediaQuery.sizeOf(context).width /6,
       // color: Color(0xff58666e).withOpacity(0.6),
       color: Colors.blue[100],
       child: Column(
@@ -28,41 +30,57 @@ class LeftSidebar extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          Expanded(
-            child: ListView(
-              children: [
-                SidebarItem(
-                  icon: Icons.dashboard,
-                  title: 'Home',
-                  isSelected: currentPage == 'home',
-                  onTap: () => onPageChanged('home'),
-                ),
-                SidebarItem(
-                  icon: Icons.payment,
-                  title: 'Transactions',
-                  isSelected: currentPage == 'transactions',
-                  onTap: () => onPageChanged('transactions'),
-                ),
-                SidebarItem(
-                  icon: Icons.account_balance,
-                  title: 'Settlements',
-                  isSelected: currentPage == 'settlements',
-                  onTap: () => onPageChanged('settlements'),
-                ),
-                SidebarItem(
-                  icon: Icons.bar_chart,
-                  title: 'Reports',
-                  isSelected: currentPage == 'Reports',
-                  onTap: () => onPageChanged('Reports'),
-                ),
-                SidebarItem(
-                  icon: Icons.settings,
-                  title: 'Settings',
-                  isSelected: currentPage == 'Settings',
-                  onTap: () => onPageChanged('Settings'),
-                ),
-              ],
-            ),
+          SidebarItem(
+            icon: Icons.dashboard,
+            title: 'Home',
+            isSelected: currentPage == 0,
+            onTap: () { onPageChanged(0);
+             if(!isDesktop){
+                Navigator.pop(context);
+              }
+            },
+          ),
+          SidebarItem(
+            icon: Icons.payment,
+            title: 'Transactions',
+            isSelected: currentPage == 1,
+            onTap: () { onPageChanged(1);
+             if(!isDesktop){
+                Navigator.pop(context);
+              }
+            },
+          ),
+          SidebarItem(
+            icon: Icons.account_balance,
+            title: 'Settlements',
+            isSelected: currentPage == 2,
+            onTap: () { 
+              onPageChanged(2);
+               if(!isDesktop){
+                Navigator.pop(context);
+              }
+             
+              },
+          ),
+          SidebarItem(
+            icon: Icons.bar_chart,
+            title: 'Reports',
+            isSelected: currentPage == 3,
+            onTap: () { onPageChanged(3);
+             if(!isDesktop){
+                Navigator.pop(context);
+              }
+            },
+          ),
+          SidebarItem(
+            icon: Icons.settings,
+            title: 'Settings',
+            isSelected: currentPage == 4,
+            onTap: () {onPageChanged(4);
+             if(!isDesktop){
+                Navigator.pop(context);
+              }
+            },
           ),
         ],
       ),

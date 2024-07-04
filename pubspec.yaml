@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   intl: ^0.19.0
   fl_chart: ^0.68.0
+  web_benchmarks: ^2.0.0
+  window_manager: ^0.3.9
 
 dev_dependencies:
   flutter_test:
