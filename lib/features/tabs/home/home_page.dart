@@ -1,5 +1,5 @@
-import 'package:dashboard/home/overview_section.dart';
-import 'package:dashboard/home/top_insights.dart';
+import 'package:dashboard/features/tabs/home/overview_section.dart';
+import 'package:dashboard/features/tabs/home/top_insights.dart';
 import 'package:dashboard/util/responsive.dart';
 import 'package:flutter/material.dart';
 

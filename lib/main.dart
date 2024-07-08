@@ -1,6 +1,8 @@
 import 'dart:io';
 
-import 'package:dashboard/dashboard_page.dart';
+import 'package:dashboard/features/auth/login.dart';
+import 'package:dashboard/features/auth/signup.dart';
+import 'package:dashboard/features/tabs/dashboard_page.dart';
 import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Crypto',
       debugShowCheckedModeBanner: false,
-      home: DashboardPage(),
+      home: Signup(),
     );
   }
 }

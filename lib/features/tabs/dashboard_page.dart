@@ -1,7 +1,7 @@
-import 'package:dashboard/home/home_page.dart';
-import 'package:dashboard/side_bar.dart';
-import 'package:dashboard/top_bar.dart';
-import 'package:dashboard/transactions_page.dart';
+import 'package:dashboard/features/tabs/home/home_page.dart';
+import 'package:dashboard/common_widget/side_bar.dart';
+import 'package:dashboard/common_widget/top_bar.dart';
+import 'package:dashboard/features/tabs/transactions_page.dart';
 import 'package:dashboard/util/responsive.dart';
 import 'package:flutter/material.dart';
 
