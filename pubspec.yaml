@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   intl: ^0.19.0
   fl_chart: ^0.68.0
+  web_benchmarks: ^2.0.0
+  window_manager: ^0.3.9
 
 dev_dependencies:
   flutter_test:
@@ -61,8 +63,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/icons/
+    - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -76,12 +79,23 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
+          weight: 400
+        - asset: assets/fonts/Montserrat/Montserrat-SemiBold.ttf
+          weight: 500
+        - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
+          weight: 600
+        - asset: assets/fonts/Montserrat/Montserrat-ExtraBold.ttf
+          weight: 700
+        - asset: assets/fonts/Montserrat/Montserrat-BoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/Montserrat/Montserrat-Italic.ttf
+          style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

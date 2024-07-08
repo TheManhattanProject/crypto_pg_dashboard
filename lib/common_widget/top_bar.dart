@@ -7,17 +7,6 @@ class TopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-          // color: Color(0xff58666e).withOpacity(0.6),
-          // boxShadow: [
-          //   BoxShadow(
-          //     // color: Colors.grey.withOpacity(0.3),
-          //     spreadRadius: 1,
-          //     blurRadius: 3,
-          //     offset: const Offset(0, 2),
-          //   ),
-          // ],
-          ),
       child: Row(
         children: [
           Expanded(

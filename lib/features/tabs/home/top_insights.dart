@@ -1,3 +1,4 @@
+import 'package:dashboard/util/responsive.dart';
 import 'package:flutter/material.dart';
 
 class TopInsights extends StatelessWidget {
@@ -52,24 +53,25 @@ class TopInsightsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isMobile = Responsive.isMobile(context);
     return Container(
-      width: MediaQuery.of(context).size.width * 0.37,
+      width: MediaQuery.of(context).size.width * 0.38,
       height: 130,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           border: Border.all(color: const Color.fromARGB(255, 221, 204, 204))),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment:isMobile?MainAxisAlignment.center : MainAxisAlignment.spaceBetween,
         children: [
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
+          Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                 const Row(
                     children: [
                       Text(
                         'Payment Count',
@@ -81,10 +83,15 @@ class TopInsightsCard extends StatelessWidget {
                       Icon(Icons.info)
                     ],
                   ),
-                  Text('Last Month')
+                 const SizedBox(width: 4,),
+                  if(isMobile)
+                 const Text('Last Month : 0')
+                  else
+                 const Text('Last Month')
                 ],
               ),
-              Text(
+              if(!isMobile)
+             const Text(
                 '0',
                 style: TextStyle(
                     color: Colors.black,
@@ -93,6 +100,7 @@ class TopInsightsCard extends StatelessWidget {
               ),
             ],
           ),
+          if(!isMobile)
           Container(
             height: 100,
             width: 100,
@@ -109,15 +117,16 @@ class PaymentMethodSplitCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width =  MediaQuery.of(context).size.width;
     return Container(
-      width: MediaQuery.of(context).size.width * 0.37,
-      height: 230,
+       width:width * 0.38,
+      height: 130,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           border: Border.all(color: const Color.fromARGB(255, 221, 204, 204))),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment:width<875?MainAxisAlignment.center : MainAxisAlignment.spaceBetween,
         children: [
           const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,12 +140,14 @@ class PaymentMethodSplitCard extends StatelessWidget {
                         fontSize: 14,
                         fontWeight: FontWeight.w400),
                   ),
+                  SizedBox(width: 4,),
                   Icon(Icons.info)
                 ],
               ),
               Text('Last Month')
             ],
           ),
+        if(!(MediaQuery.sizeOf(context).width < 875))
           Container(
             height: 100,
             width: 100,
